@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div class="container-fluid d-flex flex-column min-vh-100 justify-content-center align-items-center">
+
+    <div class="container rounded bg-white">
+        <div class="row d-flex justify-content-center pb-5">
+            <div class="col-sm-5 col-md-5 ml-1">
+                <div class="py-4 d-flex flex-row">
+                    <h5><span class="fa fa-check-square-o"></span><b> AITU</b> | </h5><span class="pl-2">Pay</span>
+                </div>
+                <h4 class="green">{{ sum }} tg</h4>
+                <h4>Store to Door</h4>
+                <div class="d-flex pt-2">
+                </div>
+                <p>Insurance claims and all necessary dependencies will be submitted to your insurer for the coverred
+                    portion of this order</p>
+                <hr>
+                <div class="pt-2">
+                    <div class="d-flex">
+                        <div>
+                            <p><b>Patient Balance: {{ user.balance }} tg</b></p>
+                        </div>
+                    </div>
+                    <p> This is an estimate for the portion of your order (not covered by insurance) due today . once
+                        insurance finalizes their review refunds and/or balances will reconcile automatically. </p>
+                    <form class="pb-3">
+                        <div class="d-flex flex-row align-content-center">
+                            <div class="pt-2 pr-2"><input type="radio" name="radio1" id="r1" checked></div>
+                            <div class="rounded border d-flex w-100 px-2">
+                                <div class="pt-2">
+                                    <p><i class="fa fa-cc-visa text-primary pr-2"></i>Your account Balance</p>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div><a href="proceed/{{ sum }}" class="btn btn-primary btn-block">Proceed to payment</a></div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-4 offset-md-1 mobile overflow-hidden">
+                <div class="py-4 d-flex justify-content-end">
+                    <h6><a href="/">Cancel and return to website</a></h6>
+                </div>
+                <div class="bg-light rounded d-flex flex-column h-100">
+                    <div class="p-2 ml-3">
+                        <h4>Order Recap</h4>
+                    </div>
+                    {% for item in items %}
+
+                        <div class="p-2 d-flex">
+                            <div class="col-8">{{ item.product.name }}</div>
+                            <div class="ml-auto">{{ item.product.price}}x{{ item.amount  }}</div>
+                        </div>
+
+                    {% endfor %}
+
+                    <div class="border-top px-4 mx-3"></div>
+                    <div class="p-2 d-flex">
+                        <div class="col-8">Patient Balance <span class="fa fa-question-circle text-secondary"></span>
+                        </div>
+                        <div class="ml-auto"><b>{{ user.balance }}</b></div>
+                    </div>
+                    <div class="border-top px-4 mx-3"></div>
+                    <div class="p-2 d-flex pt-3">
+                        <div class="col-8"><b>Total</b></div>
+                        <div class="ml-auto"><b class="green">{{sum}} tg</b></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<style>
+    body {
+        background-color: #eeeeee
+    }
+
+    .green {
+        color: rgb(15, 207, 143);
+        font-weight: 680
+    }
+
+    @media (max-width: 567px) {
+        .mobile {
+            padding-top: 40px
+        }
+    }
+</style>
+
+</html>

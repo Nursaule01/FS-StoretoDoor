@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="container">
+
+        <form class="form-horizontal rounded bg-white p-4 my-4 shadow" action="addDish" method="post"
+              enctype="multipart/form-data">
+            {% csrf_token %}
+            <legend>DISH ADD</legend>
+
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="name">DISH NAME</label>
+                <div class="col-md-4">
+                    <input id="name" name="name" placeholder="DISH NAME"
+                           class="form-control input-md" required="" type="text">
+
+                </div>
+            </div>
+            <br>
+
+            <div class="form-group mt-4">
+                <label class="col-md-4 control-label" for="picture">IMAGE OF DISH</label>
+                <div class="col-md-4">
+                    <input id="picture" name="picture" class="input-file" type="file">
+                </div>
+            </div>
+            <br>
+            <label class="col-md-4 control-label" for="ingredient_ids">DISH INGREDIENTS</label>
+            <table class="table table-bordered m-0">
+                <thead>
+                <tr>
+                    <th class="text-center py-3 px-4" style="min-width: 400px;">Product Name &amp; Details</th>
+                    <th class="text-right py-3 px-4" style="width: 100px;">Price</th>
+                    <th class="text-center align-middle py-3 px-0" style="width: 40px;">
+                        <a href="#"
+                           class="shop-tooltip float-none text-light"
+                           title=""
+                           data-original-title="Clear cart"><i
+                                class="ino ion-md-trash"></i></a></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in ingredients %}
+
+                    <tr>
+                        <td class="p-4">
+                            <div class="media align-items-center d-flex">
+                                <img src="{{ item.picture }}"
+                                     class="d-block img-thumbnail ui-bordered me-4" style="height: 50px" alt="">
+                                <div class="media-body">
+                                    <a href="/product/{{ item.id }}"
+                                       class="d-block text-dark">{{ item.name }}</a>
+                                    <small>
+                                        <span class="text-muted">{{ item.description }}</span>
+                                    </small>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="text-right font-weight-semibold align-middle p-4">
+                            {{ item.price }}
+                            tg
+                        </td>
+                        <td class="text-center align-middle px-0">
+                            <input type="checkbox" name="ingredient_ids[]" value="{{ item.id }}">
+                        </td>
+                    </tr>
+
+                {% endfor %}
+
+
+                </tbody>
+            </table>
+
+            <div class="form-group my-4">
+                <div class="col-md-4">
+                    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Add</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+    <style>
+        body {
+            margin-top: 20px;
+            background: #eee;
+        }
+    </style>
+
+{% endblock %}

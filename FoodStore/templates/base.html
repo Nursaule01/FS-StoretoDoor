@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>FoodStore</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@700&family=Irish+Grover&display=swap"
+          rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Istok+Web&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'foodstore/css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@200&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Homenaje&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Arvo&display=swap" rel="stylesheet">
+</head>
+<body>
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <div class="container">
+        <div class="navbar-collapse" id="navbar10">
+            <ul class="navbar-nav nav-fill w-100">
+                <li class="nav-item">
+                    <a class="nav-link" href="/about_us">About us</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                <li class="nav-item m-auto">
+                    <a class="nav-link active" href="/">
+                    <span class="gold text-nowrap">
+                        <svg width="37" height="26"
+                             viewBox="0 0 37 26"
+                             fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                                <path d="M34.8199 10.5H2.1799C0.772302 10.5 0.649902 11.6175 0.649902 13C0.649902 14.3825 0.772302 15.5 2.1799 15.5H34.8199C36.2275 15.5 36.3499 14.3825 36.3499 13C36.3499 11.6175 36.2275 10.5 34.8199 10.5ZM34.8199 20.5H2.1799C0.772302 20.5 0.649902 21.6175 0.649902 23C0.649902 24.3825 0.772302 25.5 2.1799 25.5H34.8199C36.2275 25.5 36.3499 24.3825 36.3499 23C36.3499 21.6175 36.2275 20.5 34.8199 20.5ZM2.1799 5.5H34.8199C36.2275 5.5 36.3499 4.3825 36.3499 3C36.3499 1.6175 36.2275 0.5 34.8199 0.5H2.1799C0.772302 0.5 0.649902 1.6175 0.649902 3C0.649902 4.3825 0.772302 5.5 2.1799 5.5Z"
+                                      fill="#F5C13B"/>
+                        </svg> Store to Door</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="w-75">
+                <form action="/search-products" method="get">
+                    <input type="text" name="text" required placeholder="Search products" class="form-control">
+                </form>
+            </div>
+
+            <div class="navbar-nav rtl">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person"></i></a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/profile">Profile</a></li>
+                        <li><a class="dropdown-item" href="/logout">LogOut</a></li>
+                    </ul>
+                </li>
+            </div>
+            <form class="d-flex position-relative">
+                <a class="link" href="/cart"><i class="bi-cart me-1"></i>
+                    {% if cartItemsAmount %}
+                        <span class="counter">{{ cartItemsAmount }}</span>
+                    {% endif %}
+                </a>
+            </form>
+        </div>
+    </div>
+</nav>
+
+{% block body %}
+
+{% endblock %}
+
+{% block footer %}
+    <footer class="container-fluid py-5 bg-chocolate">
+        <div class="row">
+            <div class="col-12 col-md">
+                <img src="https://gmedia.playstation.com/is/image/SIEPDC/apple-app-store-lozenge-01-31jul20$ru?$native--t$"
+                     class="col-6" alt="">
+                <img src="https://play.google.com/intl/en_us/badges/images/generic/ru_badge_web_generic.png"
+                     class="col-5" alt="">
+            </div>
+            <div class="col-6 col-md">
+                <h5>INFORMATION</h5>
+                <ul class="list-unstyled text-small">
+                    <li>
+                        <svg width="81" height="3" viewBox="0 0 81 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <line y1="1.5" x2="81" y2="1.5" stroke="#F5C13B" stroke-width="3"/>
+                        </svg>
+                    </li>
+                    <li><a class="link" href="#">FAQ</a></li>
+                    <li><a class="link" href="#">SHPIPING</a></li>
+                    <li><a class="link" href="#">RETURNS</a></li>
+                    <li><a class="link" href="#">ORDER STATUS</a></li>
+                    <li><a class="link" href="#">GIFT CARD BALANCE</a></li>
+                    <li><a class="link" href="#">ACCESSIBILITY</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>Delivery phone:</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="link">+7 (727) 339 85 83</a></li>
+                    <li><a class="link">+7 (705) 926 00 00</a></li>
+                    <br>
+                    <li><a class="link">Email:</a></li>
+                    <li><a class="link">help@storetodoor.kz:</a></li>
+                </ul>
+                <br><br>
+
+                <ul class="list-unstyled text-small list-group list-group-horizontal">
+                    <li class="me-4">
+                        <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                  d="M0 23.6312C0 35.3146 8.48546 45.0299 19.5833 47V30.0271H13.7083V23.5H19.5833V18.2771C19.5833 12.4021 23.3688 9.13954 28.7229 9.13954C30.4188 9.13954 32.2479 9.4 33.9438 9.66046V15.6667H30.9417C28.0688 15.6667 27.4167 17.1021 27.4167 18.9312V23.5H33.6833L32.6395 30.0271H27.4167V47C38.5145 45.0299 47 35.3166 47 23.6312C47 10.6338 36.425 0 23.5 0C10.575 0 0 10.6338 0 23.6312Z"
+                                  fill="white"/>
+                        </svg>
+                    </li>
+                    <li class="me-4">
+                        <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg"
+                             xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <rect width="47" height="47" fill="url(#pattern0)"/>
+                            <defs>
+                                <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+                                    <use xlink:href="#image0_130_41" transform="scale(0.00666667)"/>
+                                </pattern>
+                                <image id="image0_130_41" width="150" height="150"
+                                       xlink:href="data:image/png;base64,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"/>
+                            </defs>
+                        </svg>
+
+
+                    </li>
+                    <li>
+                        <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                  d="M13.8116 0.141C16.3175 0.0256363 17.1165 0 23.5 0C29.8835 0 30.6825 0.0277727 33.1863 0.141C35.6901 0.254227 37.3992 0.653727 38.8946 1.23268C40.4606 1.82445 41.8813 2.7495 43.0563 3.94586C44.2526 5.11873 45.1755 6.53727 45.7652 8.10536C46.3463 9.60082 46.7436 11.3099 46.859 13.8095C46.9744 16.3197 47 17.1187 47 23.5C47 29.8835 46.9722 30.6825 46.859 33.1884C46.7458 35.688 46.3463 37.397 45.7652 38.8925C45.1755 40.4608 44.2511 41.8817 43.0563 43.0563C41.8813 44.2526 40.4606 45.1755 38.8946 45.7652C37.3992 46.3463 35.6901 46.7436 33.1905 46.859C30.6825 46.9744 29.8835 47 23.5 47C17.1165 47 16.3175 46.9722 13.8116 46.859C11.312 46.7458 9.60295 46.3463 8.1075 45.7652C6.53924 45.1755 5.11834 44.251 3.94373 43.0563C2.74818 41.8827 1.82299 40.4625 1.23268 38.8946C0.653727 37.3992 0.256364 35.6901 0.141 33.1905C0.0256363 30.6803 0 29.8813 0 23.5C0 17.1165 0.0277727 16.3175 0.141 13.8137C0.254227 11.3099 0.653727 9.60082 1.23268 8.10536C1.82386 6.53745 2.74975 5.11726 3.94586 3.94373C5.11881 2.74843 6.53828 1.82327 8.10536 1.23268C9.60082 0.653727 11.3099 0.256364 13.8095 0.141H13.8116ZM32.9961 4.371C30.518 4.25777 29.7745 4.23427 23.5 4.23427C17.2255 4.23427 16.482 4.25777 14.0039 4.371C11.7115 4.47568 10.4682 4.85809 9.63927 5.18068C8.54332 5.60795 7.75927 6.11427 6.93677 6.93677C6.1571 7.69529 5.55707 8.61869 5.18068 9.63927C4.85809 10.4682 4.47568 11.7115 4.371 14.0039C4.25777 16.482 4.23427 17.2255 4.23427 23.5C4.23427 29.7745 4.25777 30.518 4.371 32.9961C4.47568 35.2885 4.85809 36.5318 5.18068 37.3607C5.55668 38.3798 6.157 39.3048 6.93677 40.0632C7.69518 40.843 8.62023 41.4433 9.63927 41.8193C10.4682 42.1419 11.7115 42.5243 14.0039 42.629C16.482 42.7422 17.2234 42.7657 23.5 42.7657C29.7766 42.7657 30.518 42.7422 32.9961 42.629C35.2885 42.5243 36.5318 42.1419 37.3607 41.8193C38.4567 41.392 39.2407 40.8857 40.0632 40.0632C40.843 39.3048 41.4433 38.3798 41.8193 37.3607C42.1419 36.5318 42.5243 35.2885 42.629 32.9961C42.7422 30.518 42.7657 29.7745 42.7657 23.5C42.7657 17.2255 42.7422 16.482 42.629 14.0039C42.5243 11.7115 42.1419 10.4682 41.8193 9.63927C41.392 8.54332 40.8857 7.75927 40.0632 6.93677C39.3047 6.15715 38.3813 5.55713 37.3607 5.18068C36.5318 4.85809 35.2885 4.47568 32.9961 4.371ZM20.4984 30.7444C22.1747 31.4422 24.0413 31.5364 25.7794 31.0109C27.5174 30.4853 29.0191 29.3727 30.0279 27.863C31.0367 26.3533 31.4901 24.5401 31.3106 22.7333C31.1312 20.9264 30.33 19.2379 29.0439 17.9561C28.224 17.1368 27.2327 16.5094 26.1413 16.1192C25.0498 15.7289 23.8855 15.5855 22.732 15.6993C21.5785 15.8131 20.4646 16.1812 19.4704 16.7771C18.4762 17.3731 17.6266 18.182 16.9826 19.1458C16.3386 20.1095 15.9163 21.204 15.7461 22.3506C15.5759 23.4971 15.662 24.6671 15.9982 25.7763C16.3345 26.8856 16.9125 27.9065 17.6906 28.7655C18.4688 29.6246 19.4277 30.3004 20.4984 30.7444ZM14.9588 14.9588C16.0805 13.8372 17.412 12.9474 18.8775 12.3404C20.343 11.7334 21.9138 11.4209 23.5 11.4209C25.0862 11.4209 26.657 11.7334 28.1225 12.3404C29.588 12.9474 30.9195 13.8372 32.0412 14.9588C33.1628 16.0805 34.0526 17.412 34.6596 18.8775C35.2666 20.343 35.5791 21.9138 35.5791 23.5C35.5791 25.0862 35.2666 26.657 34.6596 28.1225C34.0526 29.588 33.1628 30.9195 32.0412 32.0412C29.7759 34.3064 26.7036 35.5791 23.5 35.5791C20.2964 35.5791 17.2241 34.3064 14.9588 32.0412C12.6936 29.7759 11.4209 26.7036 11.4209 23.5C11.4209 20.2964 12.6936 17.2241 14.9588 14.9588ZM38.258 13.2198C38.536 12.9576 38.7585 12.6423 38.9124 12.2926C39.0663 11.9428 39.1485 11.5658 39.154 11.1837C39.1596 10.8017 39.0885 10.4224 38.9448 10.0683C38.8012 9.7142 38.5879 9.39255 38.3177 9.12236C38.0475 8.85217 37.7259 8.63894 37.3718 8.49529C37.0177 8.35164 36.6384 8.28049 36.2564 8.28606C35.8743 8.29163 35.4972 8.37381 35.1475 8.52772C34.7978 8.68162 34.4825 8.90414 34.2203 9.18209C33.7103 9.72265 33.4312 10.4407 33.442 11.1837C33.4528 11.9268 33.7528 12.6363 34.2783 13.1618C34.8038 13.6873 35.5133 13.9873 36.2564 13.9981C36.9994 14.0089 37.7174 13.7297 38.258 13.2198Z"
+                                  fill="white"/>
+                        </svg>
+
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </footer>
+
+{% endblock %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/country-select-js/2.1.0/js/countrySelect.min.js"
+        integrity="sha512-criuU34pNQDOIx2XSSIhHSvjfQcek130Y9fivItZPVfH7paZDEdtAMtwZxyPq/r2pyr9QpctipDFetLpUdKY4g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="{% static 'foodstore/js/script.js' %}"></script>
+</body>
+</html>

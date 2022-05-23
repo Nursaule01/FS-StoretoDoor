@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    {% load static %}
+    <h1 class="text-center">Recipe</h1>
+    <div class="container-fluid" style="min-height: 100%">
+        <div class="d-flex justify-content-center">
+
+            <div id="carouselExampleCaptions" class="carousel slide ms-4 " data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src='{{ dish.picture }}' class="d-block w-100" alt="...">
+                        <div class="carousel-caption text-start d-none d-md-block mb-4">
+                            <!-- Dish name -->
+                            <h1>{{ dish.name }}</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="d-flex justify-content-center">
+            <div class="w-75">
+
+                <div class="tab row my-4">
+                    <div class="col-12 col-lg-4 px-1">
+                        <button class="tablinks active" onclick="openTab(event, 'Ingredients')">Ingredients</button>
+                    </div>
+                    <div class="col-12 col-lg-4 px-1">
+                        <button class="tablinks" onclick="openTab(event, 'Steps')">Step by step</button>
+                    </div>
+                    <div class="col-12 col-lg-4 px-1">
+                        <button class="tablinks" onclick="openTab(event, 'Comments')">Comments</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="container w-75 my-4">
+        <div id="Ingredients" class="tabcontent active">
+            <div class="d-flex justify-content-center row">
+                {% for ingredient in ingredients %}
+                    <div class="ingredient-card position-relative col-12 mb-4">
+                        <div class="row">
+
+                            <div class="col-4 m-4">
+                                <img src="{{ ingredient.picture }}" alt="">
+                            </div>
+                            <div class="col-6 mt-4 ingredient-text">
+                                <h2 class="ingredient-name">{{ ingredient.name }}</h2>
+                                <p>{{ ingredient.description }}</p>
+                                <p>Cost: {{ ingredient.price }}tg</p>
+                            </div>
+                        </div>
+                        <div class="ingredient-button-group">
+                            <a href="/add-to-cart/{{ ingredient.id }}?next={{ request.path|urlencode }}"
+                               class="ingredient-button text-center text-white">ADD</a>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </div>
+        </div>
+
+        <div id="Steps" class="tabcontent">
+            <div class="d-flex justify-content-center row">
+                {% for step in steps %}
+                    <div class="col-12">
+                        <h1>Step #{{ step.number }}</h1>
+                        <div class="bg-light p-4">
+                            <div class="bg-white border rounded row">
+                                <img class="col-12 col-lg-6 p-0" src="{{ step.image }}">
+                                <div class="col-12 col-lg-6 my-auto">
+                                    <p class="ps-4 ms-4">{{ step.text }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+
+        <div id="Comments" class="tabcontent">
+
+            <div class="row">
+                <div class="container-fluid mb-5">
+                    <div class="d-flex justify-content-center row">
+                        <div class="d-flex flex-column col-12">
+                            <div class="coment-bottom bg-white p-2 px-4">
+                                <form action="/addComment" method="post" class="">
+                                    {% csrf_token %}
+                                    <div class="d-flex flex-row add-comment-section mt-4 mb-4">
+                                        <input type="text" name="text" class="form-control mr-3"
+                                               placeholder="Add comment">
+                                        <input type="hidden" name="dish_id" value="{{ dish.id }}">
+                                        <button class="btn btn-primary" type="submit">Comment</button>
+                                    </div>
+                                </form>
+                                <ul>
+                                    {% for comment in comments %}
+                                        <li class="p-4" style="list-style: none">
+                                            <span class="author">{{ comment.user.fullName }}</span>
+                                            <small class="created-at">Date: {{ comment.created_at }}</small>
+                                            <p class="mb-0">{{ comment.text }}</p>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
